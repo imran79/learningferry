@@ -1,0 +1,31 @@
+<div style="padding-top: 60px;">
+  <div class="form-group">
+    <mat-form-field style="width:70%">
+      <input matInput placeholder="Title">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group" style="width:70%">
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-checkbox>Check me!</mat-checkbox>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <app-editor>
+
+  </app-editor>
+
+  <button mat-button style="float:right">Click me!</button>
+
+
+</div>

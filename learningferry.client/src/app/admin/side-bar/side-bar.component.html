@@ -1,0 +1,15 @@
+<mat-sidenav-container class="SidebarContainer">
+  <mat-sidenav #sidenav class="Sidebar" mode="over" opened="true">
+
+    <h3></h3>
+
+
+    <mat-nav-list>
+
+      <a mat-list-item (click)="isTutorialActive = true" [ngClass]="{activeHigh: isTutorialActive}" routerLink="./editCourse">Manage Tutorials</a>
+
+
+      <a mat-list-item routerLink="./editTutorials">Manage Courses</a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
