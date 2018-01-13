@@ -63,6 +63,6 @@ class UserSchema {
         return userSchema;
     }
 }
-const User = mongooseConnection.model("User", UserSchema.schema);
-exports.default = User;
+const schema = mongooseConnection.model("User", UserSchema.schema);
+exports.default = schema;
 //# sourceMappingURL=UserSchema.js.map

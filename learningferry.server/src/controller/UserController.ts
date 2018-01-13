@@ -1,5 +1,5 @@
 import * as express from 'express';
-import IUser from '../app/model/interface/User';
+import IUser from '../app/model/interface/UserModel';
 import UserBusiness from '../app/business/UserBusiness';
 import IBaseController from './interface/base/BaseController'
 

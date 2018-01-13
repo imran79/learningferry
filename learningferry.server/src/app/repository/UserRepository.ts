@@ -1,5 +1,5 @@
 import UserSchema from '../dataaccess/schema/UserSchema';
-import { IUser } from '../model/interface/User'
+import IUser from '../model/interface/UserModel'
 import BaseRepository from './base/BaseRepository';
 
 class UserRepository extends BaseRepository<IUser>

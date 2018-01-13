@@ -1,5 +1,5 @@
-import IUserModel from '../../model/User';
-import IUser from '../../model/interface/User'
+import UserModel from '../../model/UserModel';
+import { UserModel as IUser } from '../../model/interface/UserModel'
 import DataAccess from '../DataAccess'
 import * as mongoose from 'mongoose';
 
@@ -70,5 +70,5 @@ class UserSchema {
     }
 }
 
-const User = mongooseConnection.model<IUser>("User", UserSchema.schema) as IUserModel;
-export default User; 
+const schema = mongooseConnection.model<IUser>("User", UserSchema.schema);
+export default schema; 

@@ -1,6 +1,6 @@
 import * as IUserBusiness from './base/interface/UserBusiness';
 import UserRepository from '../repository/UserRepository';
-import IUser from '../model/interface/User';
+import IUser from '../model/interface/UserModel';
 
 class UserBusiness implements IUserBusiness.default {
     private userRepository: UserRepository;
