@@ -28,13 +28,19 @@ class AuthController {
         failureRedirect: '/'
     });
 
-    localAuth(req: express.Request, res: express.Response): void {
-        if (req.body.username === 'imran' && req.body.password === 'khan') {
-            const jwtToken = jwt.sign('imrankhan', this.secret);
-            res.send({ 'success': 'login is successful', 'token': jwtToken })
-        }
-    };
+    /* localAuth(req: express.Request, res: express.Response): void {
+         if (req.body.username === 'imran' && req.body.password === 'khan') {
+             const jwtToken = jwt.sign('imrankhan', this.secret);
+             res.send({ 'success': 'login is successful', 'token': jwtToken })
+         }
+     }; */
+
+
+    localAuth = passport.authenticate('local-login', {
+        successRedirect: '/profile', // redirect to the secure profile section
+        failureRedirect: '/login', // redirect back to the signup page if there is an error
+        failureFlash: true // allow flash messages
+    });
 
 }
-
 export default AuthController;

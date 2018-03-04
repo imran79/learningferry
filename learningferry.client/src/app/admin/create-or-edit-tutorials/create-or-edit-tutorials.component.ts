@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-create-or-edit-tutorials',
@@ -10,6 +12,12 @@ export class CreateOrEditTutorialsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    $('.datepicker').pickadate({
+      selectMonths: true,
+      selectYears: 15,
+      closeOnSelect: true
+    });
   }
 
 }

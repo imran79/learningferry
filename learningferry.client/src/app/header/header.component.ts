@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare var jquery: any;
+declare var $: any;
+
 
 @Component({
   selector: 'app-header',
@@ -11,11 +14,12 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    $('.button-collapse').sideNav();
+    $('#admin').sideNav();
   }
 
   goAdmin() {
-    alert('admin route');
-    this.router.navigate(['admin']);
+       this.router.navigate(['admin']);
   }
 
   goHome() {

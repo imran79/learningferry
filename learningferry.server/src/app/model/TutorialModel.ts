@@ -40,6 +40,10 @@ class TutorialModel {
         return this._tutorial.publishdate;
     }
 
+    get completionTime(): number {
+        return this._tutorial.completiontime;
+    }
+
 
 }
 

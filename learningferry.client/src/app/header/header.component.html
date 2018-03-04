@@ -1,12 +1,48 @@
-<mat-toolbar color="primary" class="toolbar">
-  <span>MyMaterial</span>
-  <span class="example-spacer"></span>
-  <button mat-button (click)="goAdmin()">Admin</button>
-  <button mat-button (click)="goHome()">Home</button>
-  <button mat-button (click)="goCourses()">Courses</button>
-  <button mat-button (click)="goTutorials()">tutorials</button>
-  <button mat-button (click)="goLogin()">login</button>
-  <button mat-button (click)="goSearch()">
-    <span class="glyphicon glyphicon-search"></span>
-  </button>
-</mat-toolbar>
+<header>
+  <nav class="blue darken-4">
+    <div class="container">
+      <div class="nav-wrapper fixed">
+        <a href="#" class="brand-logo">Learning Ferry...</a>
+        <a class="button-collapse" data-activates="mobile-nav" href="#">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <a (click)='goHome()'>Home</a>
+          </li>
+          <li>
+            <a (click)='goCourses()'>Courses</a>
+          </li>
+          <li>
+            <a (click)='goTutorials()'>Tutorials</a>
+          </li>
+          <li>
+            <a (click)='goAdmin()' id="admin" data-activates="admin-nav">Admin</a>
+          </li>
+          <li>
+            <a class="btn waves-effect waves-light" (click)='goLogin()'>Login</a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="material-icons">person</i>
+            </a>
+          </li>
+        </ul>
+        <ul class="side-nav" id="mobile-nav">
+          <li>
+            <a (click)='goHome()'>Home</a>
+          </li>
+          <li>
+            <a (click)='goCourses()'>Courses</a>
+          </li>
+          <li>
+            <a (click)='goTutorials()'>Tutorials</a>
+          </li>
+        </ul>
+
+
+
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,15 +1,20 @@
-<mat-sidenav-container class="SidebarContainer">
-  <mat-sidenav #sidenav class="Sidebar" mode="over" opened="true">
+<ul id="admin-nav" class="side-nav fixed  white" style="margin-top: 45px;">
 
-    <h3></h3>
-
-
-    <mat-nav-list>
-
-      <a mat-list-item (click)="isTutorialActive = true" [ngClass]="{activeHigh: isTutorialActive}" routerLink="./editCourse">Manage Tutorials</a>
-
-
-      <a mat-list-item routerLink="./editTutorials">Manage Courses</a>
-    </mat-nav-list>
-  </mat-sidenav>
-</mat-sidenav-container>
+  <ul class="collapsible" data-coroutesllapsible="accordion" *ngIf="routes && routes.length > 0">
+    <li *ngFor="let item of routes" [ngClass]="{'active': item.isActive}" (click)="setActiveRoute(item.name)">
+      <div class="collapsible-header waves-effect waves-light">
+        <a>{{item.description}}</a>
+        <i class="material-icons" *ngIf="!item.isActive">arrow_drop_down</i>
+        <i class="material-icons" *ngIf="item.isActive">arrow_drop_up</i>
+      </div>
+      <div class="collapsible-body">
+        <ul *ngIf="item.childRoutes && item.childRoutes.length > 0">
+          <li *ngFor="let chr of item.childRoutes" (click)="setActiveRoute(chr.name)">
+            <a class="waves-effect" [ngClass]="{ 'active z-depth-3': chr.isActive}" routerLink={{chr.path}}>
+              {{chr.description}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</ul>

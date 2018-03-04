@@ -11,7 +11,8 @@ export interface TutorialModel extends Document {
     publishdate: Date,
     isarchive: boolean;
     content: string;
-    author: UserModel
+    author: UserModel;
+    completiontime: number;
 }
 
 export default TutorialModel;

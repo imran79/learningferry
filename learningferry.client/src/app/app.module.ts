@@ -14,9 +14,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CustomMaterialModule } from './custom.material.module';
-import { CoursesComponent } from './courses/courses.component';
-import { TutorialsComponent } from './tutorials/tutorials.component';
+// import { CustomMaterialModule } from './custom.material.module';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -28,7 +26,7 @@ import { HeaderComponent } from './header/header.component';
         HttpModule,
         routing,
         BrowserAnimationsModule,
-        CustomMaterialModule,
+        //  CustomMaterialModule,
         SharedModule
     ],
     declarations: [
@@ -36,8 +34,6 @@ import { HeaderComponent } from './header/header.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        CoursesComponent,
-        TutorialsComponent,
         SearchComponent,
         HeaderComponent
 

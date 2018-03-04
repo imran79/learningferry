@@ -10,9 +10,7 @@ const appRoutes: Routes = [
    { path: 'editCourse', component: CreateoreditcourseComponent },
     { path: 'editTutorials', component: CreateOrEditTutorialsComponent }
   ] }
-   /* { path: '', component: AdminComponent },
-    { path: 'editCourse', component: CreateoreditcourseComponent ,outlet : 'sub'},
-    { path: 'editTutorials', component: CreateOrEditTutorialsComponent,outlet:'sub' }*/
+
 ];
 
 export const adminRouting = RouterModule.forChild(appRoutes);

@@ -28,6 +28,9 @@ class UserModel {
   get password(): string {
     return this._user.password;
   }
+  public comparePassword(candidatePassword: string): Promise<boolean> {
+    return this._user.comparePassword(candidatePassword);
+  }
 
 }
 
