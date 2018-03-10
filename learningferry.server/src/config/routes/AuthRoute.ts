@@ -10,8 +10,7 @@ class AuthRoute {
     get Routes() {
         router.get("/auth/facebook", this.authController.facebookAuth);
         router.post("/auth/facebook/callback", this.authController.facebookAuthCallback)
-        router.post("/login", this.authController.localAuth)
-
+        router.post("auth/login", this.authController.localAuth);
         return router;
     }
 

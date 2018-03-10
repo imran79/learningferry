@@ -5,6 +5,10 @@ import IBaseController from './interface/base/BaseController';
 import * as passport from 'passport';
 import * as jwt from 'jsonwebtoken';
 import facebookAuthStrategy from '../authenticate/PassportFacebookAuth';
+
+import UserModel from '../app/model/UserModel';
+import * as moment from 'moment';
+import JwtAuthStrategy from '../authenticate/PassportJwtAuth';
 import localAuthStrategy from '../authenticate/PassportLocalAuth';
 
 
@@ -18,6 +22,13 @@ class AuthController {
         this.userBusiness = new UserBusiness();
     }
 
+    initialize = () => {
+        passport.use('jwt', JwtAuthStrategy.getJwtAuth());
+        passport.use('facebook', facebookAuthStrategy.getfacebookAuthStrategy);
+        passport.use('local', localAuthStrategy.getLocalAuthStrategy());
+        passport.initialize();
+    }
+
     facebookAuth = passport.authenticate('facebook', {
         scope: ['user_status', 'user_checkins']
     });
@@ -28,19 +39,36 @@ class AuthController {
         failureRedirect: '/'
     });
 
-    /* localAuth(req: express.Request, res: express.Response): void {
-         if (req.body.username === 'imran' && req.body.password === 'khan') {
-             const jwtToken = jwt.sign('imrankhan', this.secret);
-             res.send({ 'success': 'login is successful', 'token': jwtToken })
-         }
-     }; */
+
+    private getToken = (user: IUser): Object => {
+
+        const expires = moment().utc().add({ days: 7 }).unix();
+        let token = jwt.sign({
+            exp: Math.floor(Date.now() / 1000) + (60 * 60),
+            data: user.username
+        }, this.secret);
+
+        return {
+            token: token,
+            expiry: moment.unix(expires).format(),
+            user: user._id
+        };
+
+    }
 
 
-    localAuth = passport.authenticate('local-login', {
-        successRedirect: '/profile', // redirect to the secure profile section
-        failureRedirect: '/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    });
+    jwtAuth = (callback) => passport.authenticate("jwt", { session: false, failWithError: true }, callback);
 
+    localAuth(req: express.Request, res: express.Response, next: express.NextFunction): void {
+
+        passport.authenticate('local', function (err, user, info) {
+            if (err) { return next(err); }
+            if (!user) { return res.redirect('/login'); }
+            req.logIn(user, function (err) {
+                if (err) { return next(err); }
+                return res.status(200).json(this.getToken(user));
+            });
+        })(req, res, next);
+    }
 }
 export default AuthController;
