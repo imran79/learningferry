@@ -28,6 +28,9 @@ class TutorialModel {
     get publishDate() {
         return this._tutorial.publishdate;
     }
+    get completionTime() {
+        return this._tutorial.completiontime;
+    }
 }
 exports.default = TutorialModel;
 //# sourceMappingURL=TutorialModel.js.map

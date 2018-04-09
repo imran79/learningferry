@@ -1,3 +1,4 @@
+
 import * as path from 'path';
 import * as express from 'express'
 import * as bodyparser from 'body-parser'
@@ -14,6 +15,7 @@ class App {
 
   }
   static get getMiddlewareConfiguration() {
+    console.log('basemiddlewareconfiguration');
     return BaseMiddleware.configuration;
   }
 

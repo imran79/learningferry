@@ -5,12 +5,12 @@ import IBaseController from './interface/base/BaseController'
 
 class TutorialController implements IBaseController<TutorialBusiness> {
 
-    create(req: express.Request, res: express.Response): void {
+    create = async (req: express.Request, res: express.Response) => {
         try {
             var tutorial: ITutorial = <ITutorial>req.body;
             console.table(tutorial);
             var tutorialBusiness = new TutorialBusiness();
-            tutorialBusiness.create(tutorial, (error, result) => {
+            await tutorialBusiness.create(tutorial, (error, result) => {
                 if (error) res.send({ "error": error });
                 else res.send({ "success": "success" });
             });
@@ -22,12 +22,12 @@ class TutorialController implements IBaseController<TutorialBusiness> {
         }
 
     }
-    update(req: express.Request, res: express.Response): void {
+    update = async (req: express.Request, res: express.Response) => {
         try {
             let tutorial: ITutorial = <ITutorial>req.body;
             let id: string = req.params._id;
             let tutorialBusiness = new TutorialBusiness();
-            tutorialBusiness.update(id, tutorial, (error, result) => {
+            await tutorialBusiness.update(id, tutorial, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "tutorial": result });
             });
@@ -40,12 +40,12 @@ class TutorialController implements IBaseController<TutorialBusiness> {
 
     }
 
-    delete(req: express.Request, res: express.Response): void {
+    delete = async (req: express.Request, res: express.Response) => {
         try {
 
             let id: string = req.params._id;
             let tutorialBusiness = new TutorialBusiness();
-            tutorialBusiness.delete(id, (error, result) => {
+            await tutorialBusiness.delete(id, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success" });
             });
@@ -58,10 +58,10 @@ class TutorialController implements IBaseController<TutorialBusiness> {
 
     }
 
-    findAll(req: express.Request, res: express.Response): void {
+    findAll = async (req: express.Request, res: express.Response) => {
         try {
             let tutorialBusiness = new TutorialBusiness();
-            tutorialBusiness.findAll((error, result) => {
+            await tutorialBusiness.findAll((error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "tutorials": result });
             });
@@ -74,12 +74,12 @@ class TutorialController implements IBaseController<TutorialBusiness> {
 
     }
 
-    findById(req: express.Request, res: express.Response): void {
+    findById = async (req: express.Request, res: express.Response) => {
 
         try {
             let id: string = req.params._id;
             let tutorialBusiness = new TutorialBusiness();
-            tutorialBusiness.findById(id, (error, result) => {
+            await tutorialBusiness.findById(id, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "users": result });
             });

@@ -1,6 +1,14 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
 version: v1.10.1
-ignore: {}
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:hoek:20180212':
+    - passport-jwt > jsonwebtoken > joi > topo > hoek:
+        reason: None given
+        expires: '2018-04-16T14:23:46.475Z'
+      passport-jwt > jsonwebtoken > joi > hoek:
+        reason: None given
+        expires: '2018-04-16T14:53:49.542Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:debug:20170905':

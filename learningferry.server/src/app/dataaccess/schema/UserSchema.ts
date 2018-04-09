@@ -1,4 +1,4 @@
-import UserModel from '../../model/UserModel';
+
 import { UserModel as IUser } from '../../model/interface/UserModel'
 import DataAccess from '../DataAccess'
 import * as mongoose from 'mongoose';
@@ -37,7 +37,8 @@ export const userSchema = new mongoose.Schema({
     email: {
         type: String,
         default: '',
-        required: true
+        required: true,
+        unique: true,
     },
     password: {
         type: String,

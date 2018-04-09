@@ -8,6 +8,7 @@ class App {
         App.getMiddlewareConfiguration();
     }
     static get getMiddlewareConfiguration() {
+        console.log('basemiddlewareconfiguration');
         return BaseMiddleware_1.default.configuration;
     }
 }

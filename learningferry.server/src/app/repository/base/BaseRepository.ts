@@ -10,25 +10,25 @@ class BaseReposiotry<T extends mongoose.Document> implements Read<T>, Write<T>{
         this.model = schemaModel;
     }
 
-    public create(item: T, callback: (error: any, results: any) => void): void {
-        this.model.create(item, callback);
+    create = async (item: T, callback: (error: any, results: any) => void) => {
+        await this.model.create(item, callback);
     }
 
-    public update(id: mongoose.Types.ObjectId, item: T, callback: (error: any, results: any) => void): void {
-        this.model.update({ _id: id }, item, callback);
+    update = async (id: mongoose.Types.ObjectId, item: T, callback: (error: any, results: any) => void) => {
+        await this.model.update({ _id: id }, item, callback);
     }
-    delete(id: string, callback: (error: any, results: any) => void): void {
+    delete = async (id: string, callback: (error: any, results: any) => void) => {
         this.model.remove({ _id: this.toObjectId(id) }, (err) => callback(err, null));
 
     }
-    findAll(callback: (er: any, reuslts: any) => void): void {
+    findAll = async (callback: (er: any, reuslts: any) => void) => {
         this.model.find(callback);
     }
-    findById(id: string, callback: (er: any, results: T) => void): void {
+    findById = async (id: string, callback: (er: any, results: T) => void) => {
         this.model.findById(id, callback);
     }
 
-    private toObjectId(_id: string): mongoose.Types.ObjectId {
+    private toObjectId = (_id: string): mongoose.Types.ObjectId => {
         return mongoose.Types.ObjectId.createFromHexString(_id)
     }
 }

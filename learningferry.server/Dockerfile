@@ -1,40 +1,30 @@
+##STAGE 1 : Building image
+FROM keymetrics/pm2:latest-alpine
+## Copying SRC
+COPY src src/
+##COPY tsconfig.json
+COPY tsconfig.json .
+##COPY package.JSON
+COPY package.json . 
+##COPY package-lock.JSON
+COPY package-lock.json .
+##COPY pm2.json
+COPY  pm2.json .
 
-FROM ubuntu
+## celaning npm cahce
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
-#ENV PORT 3000
+## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
 
-EXPOSE 3000
-
-COPY package.json package.json
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN apt-get update \
-    && apt-get install -y curl \
-    && apt-get -y autoclean
-
-# nvm environment variables
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 8.1.4
-
-# install nvm
-# https://github.com/creationix/nvm#install-script
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
-
-# install node and npm
-RUN source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-# add node and npm to path so the commands are available
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
-
-
-
-RUN npm install
+WORKDIR /ng-app
 
 COPY . .
+
+## building pacakage
 RUN npm run build
 
-CMD ["node", "dist/index.js"]
+
+
+## running pm2
+CMD ["pm2-dev", "start","pm2.json" ]

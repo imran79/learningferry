@@ -1,5 +1,6 @@
-import AuthController from '../../controller/AuthController'
+import AuthController from '../../authenticate/controller/AuthController'
 import { Router } from 'express'
+import { request } from 'http';
 var router = Router();
 class AuthRoute {
     private authController: AuthController;
@@ -8,9 +9,10 @@ class AuthRoute {
     }
 
     get Routes() {
-        router.get("/auth/facebook", this.authController.facebookAuth);
-        router.post("/auth/facebook/callback", this.authController.facebookAuthCallback)
-        router.post("auth/login", this.authController.localAuth);
+        //  router.all(process.env.API_BASE + '*', this.authController.allPathValid)
+        router.get(process.env.API_BASE + "auth/facebook", this.authController.facebookAuth);
+        router.post(process.env.API_BASE + "auth/facebook/callback", this.authController.facebookAuthCallback)
+        router.post(process.env.API_BASE + "auth/login", this.authController.localAuth);
         return router;
     }
 

@@ -25,6 +25,10 @@ class UserModel {
     get password() {
         return this._user.password;
     }
+    comparePassword(candidatePassword) {
+        return this._user.comparePassword(candidatePassword);
+    }
 }
+exports.UserModel = UserModel;
 exports.default = UserModel;
 //# sourceMappingURL=UserModel.js.map

@@ -3,14 +3,14 @@ import IUser from '../app/model/interface/UserModel';
 import UserBusiness from '../app/business/UserBusiness';
 import IBaseController from './interface/base/BaseController'
 
-class UserController implements IBaseController<UserBusiness> {
+export class UserController implements IBaseController<UserBusiness> {
 
-    create(req: express.Request, res: express.Response): void {
+    create = async (req: express.Request, res: express.Response) => {
         try {
             var user: IUser = <IUser>req.body;
             console.table(user);
             var userBusiness = new UserBusiness();
-            userBusiness.create(user, (error, result) => {
+            await userBusiness.create(user, (error, result) => {
                 if (error) res.send({ "error": error });
                 else res.send({ "success": "success" });
             });
@@ -18,34 +18,31 @@ class UserController implements IBaseController<UserBusiness> {
         catch (e) {
             console.log(e);
             res.send({ "error": "error in your request" });
-
         }
-
     }
-    update(req: express.Request, res: express.Response): void {
+    update = async (req: express.Request, res: express.Response) => {
         try {
             let user: IUser = <IUser>req.body;
             let id: string = req.params._id;
             let userBusiness = new UserBusiness();
-            userBusiness.update(id, user, (error, result) => {
+            await userBusiness.update(id, user, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "users": result });
             });
 
         } catch (e) {
-
             console.log(e);
             res.send({ "error": "error in your reqeust" });
         }
 
     }
 
-    delete(req: express.Request, res: express.Response): void {
+    delete = async (req: express.Request, res: express.Response) => {
         try {
 
             let id: string = req.params._id;
             let userBusiness = new UserBusiness();
-            userBusiness.delete(id, (error, result) => {
+            await userBusiness.delete(id, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success" });
             });
@@ -58,10 +55,11 @@ class UserController implements IBaseController<UserBusiness> {
 
     }
 
-    findAll(req: express.Request, res: express.Response): void {
+    findAll = async (req: express.Request, res: express.Response) => {
         try {
+            console.log('find all');
             let userBusiness = new UserBusiness();
-            userBusiness.findAll((error, result) => {
+            await userBusiness.findAll((error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "users": result });
             });
@@ -74,12 +72,12 @@ class UserController implements IBaseController<UserBusiness> {
 
     }
 
-    findById(req: express.Request, res: express.Response): void {
+    findById = async (req: express.Request, res: express.Response) => {
 
         try {
             let id: string = req.params._id;
             let userBusiness = new UserBusiness();
-            userBusiness.findById(id, (error, result) => {
+            await userBusiness.findById(id, (error, result) => {
                 if (error) res.send({ "error": "error" });
                 else res.send({ "success": "success", "users": result });
             });

@@ -8,11 +8,11 @@ class TutorialRoute {
         this.tutorialController = new TutorialController_1.default;
     }
     get Routes() {
-        router.get("/tutorials", this.tutorialController.findAll);
-        router.post("/tutorials", this.tutorialController.create);
-        router.get("/tutorials/:_id", this.tutorialController.findById);
-        router.delete("/tutorials/:_id", this.tutorialController.delete);
-        router.put("/tutorials", this.tutorialController.update);
+        router.get(process.env.API_BASE + "tutorials", this.tutorialController.findAll);
+        router.post(process.env.API_BASE + "tutorials", this.tutorialController.create);
+        router.get(process.env.API_BASE + "tutorials/:_id", this.tutorialController.findById);
+        router.delete(process.env.API_BASE + "tutorials/:_id", this.tutorialController.delete);
+        router.put(process.env.API_BASE + "tutorials", this.tutorialController.update);
         return router;
     }
 }
