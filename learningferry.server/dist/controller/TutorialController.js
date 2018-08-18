@@ -18,31 +18,32 @@ class TutorialController {
                 var tutorialBusiness = new TutorialBusiness_1.default();
                 yield tutorialBusiness.create(tutorial, (error, result) => {
                     if (error)
-                        res.send({ "error": error });
+                        res.send({ error: error });
                     else
-                        res.send({ "success": "success" });
+                        res.send({ success: "success" });
                 });
             }
             catch (e) {
                 console.log(e);
-                res.send({ "error": "error in your request" });
+                res.send({ error: "error in your request" });
             }
         });
         this.update = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 let tutorial = req.body;
+                console.log(req.params);
                 let id = req.params._id;
                 let tutorialBusiness = new TutorialBusiness_1.default();
                 yield tutorialBusiness.update(id, tutorial, (error, result) => {
                     if (error)
-                        res.send({ "error": "error" });
+                        res.send({ error: "error" });
                     else
-                        res.send({ "success": "success", "tutorial": result });
+                        res.send({ success: "success", tutorial: result });
                 });
             }
             catch (e) {
                 console.log(e);
-                res.send({ "error": "error in your reqeust" });
+                res.send({ error: "error in your reqeust" });
             }
         });
         this.delete = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -51,14 +52,14 @@ class TutorialController {
                 let tutorialBusiness = new TutorialBusiness_1.default();
                 yield tutorialBusiness.delete(id, (error, result) => {
                     if (error)
-                        res.send({ "error": "error" });
+                        res.send({ error: "error" });
                     else
-                        res.send({ "success": "success" });
+                        res.send({ success: "success" });
                 });
             }
             catch (e) {
                 console.log(e);
-                res.send({ "error": "error in your reqeust" });
+                res.send({ error: "error in your reqeust" });
             }
         });
         this.findAll = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -66,14 +67,14 @@ class TutorialController {
                 let tutorialBusiness = new TutorialBusiness_1.default();
                 yield tutorialBusiness.findAll((error, result) => {
                     if (error)
-                        res.send({ "error": "error" });
+                        res.send({ error: "error" });
                     else
-                        res.send({ "success": "success", "tutorials": result });
+                        res.send({ success: "success", tutorials: result });
                 });
             }
             catch (e) {
                 console.log(e);
-                res.send({ "error": "error in your reqeust" });
+                res.send({ error: "error in your reqeust" });
             }
         });
         this.findById = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -82,14 +83,14 @@ class TutorialController {
                 let tutorialBusiness = new TutorialBusiness_1.default();
                 yield tutorialBusiness.findById(id, (error, result) => {
                     if (error)
-                        res.send({ "error": "error" });
+                        res.send({ error: "error" });
                     else
-                        res.send({ "success": "success", "users": result });
+                        res.send({ success: "success", tutorials: result });
                 });
             }
             catch (e) {
                 console.log(e);
-                res.send({ "error": "error in your reqeust" });
+                res.send({ error: "error in your reqeust" });
             }
         });
     }

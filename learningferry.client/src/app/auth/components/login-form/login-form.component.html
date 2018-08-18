@@ -1,0 +1,105 @@
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form [formGroup]="form" (ngSubmit)="f.form.valid && submit()" id="loginform" class="form-horizontal" role="form" name="form"
+                    #f="ngForm" novalidate>
+
+                    <div style="margin-bottom: 25px" class="input-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input id="login-username" type="text" class="form-control" value="" placeholder="username or email" name="username" required>
+                        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input id="login-password" type="password" class="form-control" placeholder="password" name="password" required>
+                        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                            <button id="btn-login" type="submit" href="#" [disabled]="loading" class="btn btn-success">Login
+                            </button>
+                            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                            />
+                            <a href="/login/facebook" target="_self">
+                                <Button id="btn-fblogin" type="button" class="btn blue">Login with Facebook</Button>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Don't have an account
+
+
+                                <a href="#">
+
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!--<div class="row">
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Login</span>
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <p>
+
+                        <input type="text" placeholder="Username" formControlName="username">
+
+                    </p>
+
+                    <p>
+
+                        <input type="password" placeholder="Password" formControlName="password">
+
+                    </p>
+
+                    <p *ngIf="errorMessage" class="loginError">
+                        {{ errorMessage }}
+                    </p>
+
+                    <div class="card-action">
+                        <button type="submit">Login</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

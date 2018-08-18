@@ -14,19 +14,14 @@ class TutorialSchema {
                 type: Date,
                 default: Date.now
             },
-            createBy: {
-                type: String,
-                default: '',
-                required: true
-            },
             title: {
                 type: String,
-                default: '',
+                default: "",
                 required: true
             },
             content: {
                 type: String,
-                default: ''
+                default: ""
             },
             isdraft: {
                 type: Boolean,
@@ -41,7 +36,12 @@ class TutorialSchema {
                 default: false
             },
             author: {
-                type: mongoose.Schema.Types.ObjectId, ref: 'User'
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
+            },
+            duration: {
+                type: Number,
+                default: 0
             }
         });
         return tutorialSchema;

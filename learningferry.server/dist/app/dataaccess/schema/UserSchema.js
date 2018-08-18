@@ -15,30 +15,34 @@ exports.userSchema = new mongoose.Schema({
     },
     firstname: {
         type: String,
-        default: '',
+        default: "",
         required: true
     },
     lastname: {
         type: String,
-        default: '',
+        default: "",
         required: true
     },
     username: {
         type: String,
-        default: '',
+        default: "",
         required: true,
         unique: true,
         lowercase: true
     },
     email: {
         type: String,
-        default: '',
+        default: "",
         required: true,
-        unique: true,
+        unique: true
+    },
+    isadmin: {
+        type: Boolean,
+        default: false
     },
     password: {
         type: String,
-        default: '',
+        default: "",
         required: true
     },
     facebook: {

@@ -1,14 +1,15 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
 
-    login(username: string, password: string) {
-        return this.http.post('/users/authenticate', { username: username, password: password })
+    login = (username: string, password: string) => {
+        return this.http.post(environment.apiBaseUrl + '/users/authenticate', { username: username, password: password })
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 const user = response.json();
@@ -23,7 +24,7 @@ export class AuthenticationService {
 
     facebookAuth() {
         console.log('reach auth service');
-        return this.http.get('/login/facebook')
+        return this.http.get(environment.apiBaseUrl + '/login/facebook')
             .map((response: Response) => {
                 console.log('auth response :' + response);
                 // login successful if there's a jwt token in the response

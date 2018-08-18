@@ -1,13 +1,10 @@
-import UserSchema from '../dataaccess/schema/UserSchema';
-import ITutorial from '../model/interface/TutorialModel'
-import BaseRepository from './base/BaseRepository';
+import TutorialSchema from "../dataaccess/schema/TutorialSchema";
+import ITutorial from "../model/interface/TutorialModel";
+import BaseRepository from "./base/BaseRepository";
 
-class TutorialRepository extends BaseRepository<ITutorial>
-{
-
-    constructor() {
-        super(UserSchema);
-    }
-
+class TutorialRepository extends BaseRepository<ITutorial> {
+  constructor() {
+    super(TutorialSchema);
+  }
 }
 export default TutorialRepository;

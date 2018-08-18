@@ -12,12 +12,15 @@ COPY package-lock.json .
 COPY  pm2.json .
 
 ## celaning npm cahce
-RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+RUN npm set progress=false && npm config set depth 0 
+RUN npm install -g nodemon
+RUN npm install -g typescript
+RUN npm install -g bash
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+RUN npm install && mkdir /app && cp -R ./node_modules ./app
 
-WORKDIR /ng-app
+WORKDIR /app
 
 COPY . .
 
@@ -27,4 +30,6 @@ RUN npm run build
 
 
 ## running pm2
-CMD ["pm2-dev", "start","pm2.json" ]
+##CMD ["pm2-dev", "start","pm2.json" ]
+
+CMD [“node”, “dist/index.js”]
